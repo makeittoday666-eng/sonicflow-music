@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10101b">
+  <meta name="description" content="SonicFlow Music — online and local music player">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>SonicFlow Music</title>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brandmark">♫</div>
+      <div><h1>SonicFlow</h1><p>Music for your flow</p></div>
+      <button id="installBtn" class="install hidden" type="button">Install</button>
+    </header>
+
+    <section class="hero">
+      <div class="orb orb1"></div><div class="orb orb2"></div>
+      <div class="hero-content">
+        <span class="eyebrow">YOUR MUSIC SPACE</span>
+        <h2>Feel the<br><span>flow.</span></h2>
+        <p>Stream online or play audio files from your iPhone.</p>
+      </div>
+      <div class="record">♫</div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h3>Play online</h3><span class="hint">Direct audio URL</span></div>
+      <form id="urlForm" class="url-form">
+        <input id="trackUrl" type="url" placeholder="Paste a direct MP3/AAC URL" autocomplete="url" required>
+        <button type="submit" aria-label="Play URL">Play</button>
+      </form>
+      <p class="tiny">Use audio URLs you own or are allowed to stream. A webpage or YouTube link will not work here.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h3>On your iPhone</h3><span class="hint">Local files</span></div>
+      <label class="pick-file">
+        <span class="plus">＋</span><span><strong>Choose audio files</strong><small>MP3, M4A, AAC and supported formats</small></span>
+        <input id="filePicker" type="file" accept="audio/*" multiple>
+      </label>
+      <div id="trackList" class="track-list"><div class="empty">Your selected tracks will appear here.</div></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h3>Background playback</h3><span class="hint">Best effort on iOS</span></div>
+      <p class="tiny">Start playback first, then return to Home Screen or lock your iPhone. iOS may show media controls on the Lock Screen. Browser/PWA behavior can vary by iOS version; this is not as reliable as a native app.</p>
+    </section>
+  </main>
+
+  <footer class="player" id="player">
+    <div class="player-track">
+      <div class="mini-art">♫</div>
+      <div class="track-meta"><strong id="nowTitle">Nothing playing</strong><small id="nowSubtitle">Choose a file or add an audio URL</small></div>
+      <button id="favBtn" class="heart" aria-label="Toggle favorite" type="button">♡</button>
+    </div>
+    <div class="controls">
+      <button id="prevBtn" aria-label="Previous track" type="button">⏮</button>
+      <button id="playBtn" class="play" aria-label="Play" type="button">▶</button>
+      <button id="nextBtn" aria-label="Next track" type="button">⏭</button>
+    </div>
+    <div class="timeline">
+      <span id="currentTime">0:00</span>
+      <input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek">
+      <span id="duration">0:00</span>
+    </div>
+    <audio id="audio" preload="metadata" playsinline></audio>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
